@@ -13,6 +13,7 @@
 		2FC37BB92871AE09001B56FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC37BB72871AE09001B56FB /* Main.storyboard */; };
 		2FC37BBB2871AE0D001B56FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC37BBA2871AE0D001B56FB /* Assets.xcassets */; };
 		2FC37BBE2871AE0D001B56FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC37BBC2871AE0D001B56FB /* LaunchScreen.storyboard */; };
+		2FC37BC82871D09B001B56FB /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC37BC72871D09B001B56FB /* PeripheralViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2FC37BBA2871AE0D001B56FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FC37BBD2871AE0D001B56FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FC37BBF2871AE0D001B56FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FC37BC72871D09B001B56FB /* PeripheralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				2FC37BB12871AE09001B56FB /* AppDelegate.swift */,
 				2FC37BB32871AE09001B56FB /* SceneDelegate.swift */,
 				2FC37BB52871AE09001B56FB /* CentralConnectController.swift */,
+				2FC37BC72871D09B001B56FB /* PeripheralViewController.swift */,
 				2FC37BB72871AE09001B56FB /* Main.storyboard */,
 				2FC37BBA2871AE0D001B56FB /* Assets.xcassets */,
 				2FC37BBC2871AE0D001B56FB /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FC37BC82871D09B001B56FB /* PeripheralViewController.swift in Sources */,
 				2FC37BB62871AE09001B56FB /* CentralConnectController.swift in Sources */,
 				2FC37BB22871AE09001B56FB /* AppDelegate.swift in Sources */,
 				2FC37BB42871AE09001B56FB /* SceneDelegate.swift in Sources */,
