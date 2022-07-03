@@ -43,10 +43,7 @@ class CentralConnectController: UIViewController {
         print("Scanning...")
         scanButton.setTitle("Scanning...", for: .normal)
         cbPeripherals.removeAll()
-
-//        let matchingOptions = [CBConnectionEventMatchingOption.serviceUUIDs: [BTConstants.sampleServiceUUID]]
-//        cbManager.registerForConnectionEvents(options: matchingOptions)
-
+        tableView.reloadData()
         cbManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
     }
 
@@ -54,6 +51,13 @@ class CentralConnectController: UIViewController {
         print("Stop Scan")
         scanButton.setTitle("Scan", for: .normal)
         cbManager.stopScan()
+    }
+
+    func goPeripheralView(peripheral:CBPeripheral){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PeripheralViewController") as! PeripheralViewController
+        vc.cbManager = cbManager
+        vc.selectedPeripheral = peripheral
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -96,33 +100,6 @@ extension CentralConnectController:CBCentralManagerDelegate {
         }
 
     }
-
-//    func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
-//        print("connectionEventDidOccur for peripheral: %@", peripheral)
-//        switch event {
-//        case .peerConnected:
-//            cbPeripherals.append(peripheral)
-//        case .peerDisconnected:
-//            print("Peer %@ disconnected!", peripheral)
-//        default:
-//            if let idx = cbPeripherals.firstIndex(where: { $0 === peripheral }) {
-//                cbPeripherals.remove(at: idx)
-//            }
-//        }
-//        tableView.reloadData()
-//    }
-
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("peripheral: %@ connected", peripheral)
-    }
-
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("peripheral: %@ failed to connect", peripheral)
-    }
-
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("peripheral: %@ disconnected", peripheral)
-    }
 }
 
 //TableView Delegate
@@ -143,13 +120,10 @@ extension CentralConnectController:UITableViewDelegate,UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        stopScan()
+
         let index = cbPeripherals.count - (indexPath.row + 1)
-
-        let al = UIAlertController(title: "\(cbPeripherals[index].identifier)", message: "\(cbPeripherals[index].name ?? "unknown")", preferredStyle: .alert)
-        let ac = UIAlertAction(title: "ok", style: .cancel)
-        al.addAction(ac)
-        self.present(al, animated: true)
-
+        goPeripheralView(peripheral: cbPeripherals[index])
     }
 
 }
